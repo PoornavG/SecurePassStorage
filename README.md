@@ -1,7 +1,3 @@
-Here's a **README.md** file for your GitHub repository:  
-
----
-
 ### **📌 SecurePassStorage - A Secure Password Management API**  
 
 SecurePassStorage is a **Node.js + Express** API that provides a secure way to store and verify passwords using **Argon2 hashing** and a **deterministic salt mechanism**.
