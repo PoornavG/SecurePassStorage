@@ -1,17 +1,28 @@
-const { MongoClient } = require('mongodb')
+// db.js
+const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
-let dbConnection
-module.exports = {
-    connectToDb: (cb) => {
-        MongoClient.connect('mongodb://localhost:27017/Users')
-            .then((client) => {
-                dbConnection = client.db()
-                return cb()
-            })
-            .catch(err => {
-                console.log(err)
-                return cb(err)
-            })
-    },
-    getDb: () => dbConnection
+const client = new MongoClient(process.env.MONGODB_URI);
+
+
+let db;
+
+async function connectToDB() {
+    try {
+        await client.connect();
+        db = client.db(process.env.DB_NAME || 'SecurePassStorage');
+        console.log("✅ Connected to MongoDB Atlas");
+    } catch (error) {
+        console.error("❌ MongoDB connection error:", error);
+        throw error;
+    }
 }
+
+function getDB() {
+    if (!db) {
+        throw new Error("DB not initialized. Call connectToDB() first.");
+    }
+    return db;
+}
+
+module.exports = { connectToDB, getDB };
