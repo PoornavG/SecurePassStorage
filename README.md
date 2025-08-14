@@ -52,7 +52,7 @@ Follow these instructions to get the project up and running on your local machin
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/securepassstorage.git](https://github.com/your-username/securepassstorage.git)
+    git clone [https://github.com/PoornavG/securepassstorage.git](https://github.com/PoornavG/securepassstorage.git)
     cd securepassstorage
     ```
 
